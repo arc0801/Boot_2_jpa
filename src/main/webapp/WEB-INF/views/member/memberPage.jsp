@@ -41,11 +41,14 @@
 	    
 	    <div class="form-group">
 	      <label for="files">File:</label>
-	      <img alt="" src="../upload/${file.fname}">
+	      <img alt="" src="../join/${member.memberFilesVO.fname}">
+	      <h3>${member.memberFilesVO.fname}</h3>
 	      <!-- <input type="file" class="form-control" id="files" name="files"> -->
 	    </div>
 	    
-	    <a class="btn btn-primary" href="./memberFileDown?fnum=${file.fnum}">FileDown</a>
+	    <a class="btn btn-primary" href="./memberFileDown?fnum=${member.memberFilesVO.fnum}">FileDown</a>
+	    <a class="btn btn-warning btn_update" href="./memberUpdate">Update</a>
+	    <a class="btn btn-danger btn_delete" href="./memberDelete">Delete</a>
 	  </form>
 	</div>
 </body>

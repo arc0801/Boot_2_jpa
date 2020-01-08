@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -49,11 +50,51 @@ public class MemberController {
 //		
 //	}
 	
+	@GetMapping("memberDelete")
+	public ModelAndView memberDelete(HttpSession session) throws Exception {
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		
+		memberService.memberDelete(memberVO);
+		
+		session.invalidate();
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("msg", "Delete Success");
+		mv.addObject("path", "/");
+		mv.setViewName("common/result");
+		
+		return mv;
+	}
+	
+	@GetMapping("memberUpdate")
+	public void memberUpdate(HttpSession session, Model model) throws Exception {
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		model.addAttribute("memberVO", memberVO);
+	}
+	
+	@PostMapping("memberUpdate")
+	public ModelAndView memberUpdate(MemberVO memberVO, MultipartFile files, HttpSession session) throws Exception {
+		//System.out.println("files : "+ files.getSize());
+		MemberVO loginVO = (MemberVO)session.getAttribute("member");
+		
+		memberVO.setMemberFilesVO(loginVO.getMemberFilesVO());
+		
+		memberVO = memberService.memberUpdate(memberVO, files);
+		
+		session.setAttribute("member", memberVO);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("msg", "Update Success");
+		mv.addObject("path", "./memberPage");
+		
+		mv.setViewName("common/result");
+		
+		return mv;
+	}
+	
 	@GetMapping("memberPage")
 	public void memberPage(HttpSession session) throws Exception {
-		List<MemberFilesVO> list = memberService.memberPage(session);
 		
-		session.setAttribute("file", list.get(0));
 	}
 	
 	@GetMapping("memberLogout")
@@ -123,11 +164,29 @@ public class MemberController {
 		return "member/memberJoin";
 	}
 	
+	@PostMapping("memberIdCheck")
+	@ResponseBody//view를 찾지 않고, 결과물을 바로 json으로 보내줌.
+	public boolean memberIdCheck(String id) throws Exception {
+		return memberService.memberIdCheck(id);
+	}
+	
 	@PostMapping("memberJoin")
 	public ModelAndView memberJoin(MemberVO memberVO, MultipartFile files) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
+		memberVO = memberService.memberJoin(memberVO, files);
 		
+		String msg = "Join Fail";
+		String path = "../";
+		
+		if(memberVO != null) {
+			msg = "Join Success";
+			path = "memberLogin";
+		}else {
+		}
+		mv.setViewName("common/result");
+		mv.addObject("msg", msg);
+		mv.addObject("path", path);
 		
 		return mv;
 	}

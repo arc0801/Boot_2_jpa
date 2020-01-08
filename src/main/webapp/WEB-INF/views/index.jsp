@@ -23,7 +23,7 @@
 		
 		
 		<div class="container">
-			<img alt="지성1" src="./images/1.jpg">
+			<img alt="지성1" src="./images/2.jpg">
 		</div>
 	</div>
 </body>

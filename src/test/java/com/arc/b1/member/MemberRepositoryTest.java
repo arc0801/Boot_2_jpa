@@ -14,10 +14,60 @@ class MemberRepositoryTest {
 
 	@Autowired
 	private MemberRepository memberRepository;
+	@Autowired
+	private MemberFilesRepository memberFilesRepository;
 	
 	@Test
-	void memberPage() {
+	void updateTest() {
+		MemberVO memberVO = new MemberVO();
+		memberVO.setId("g");
+		memberVO.setPw("g");
+		memberVO.setName("gg");
+		memberVO.setEmail("g@g");
 		
+		MemberFilesVO memberFilesVO = new MemberFilesVO();
+		memberFilesVO.setFnum(14);
+		memberFilesVO.setFname("gFname.jpg");
+		memberFilesVO.setOname("gOname.jsp");
+		
+		memberVO.setMemberFilesVO(memberFilesVO);
+		memberFilesVO.setMemberVO(memberVO);
+		
+		memberRepository.save(memberVO);
+	}
+	
+	//@Test
+	void deleteTest() {
+		memberRepository.deleteById("n");
+	}
+	
+	//@Test
+	void insertTest() {
+		MemberVO memberVO = new MemberVO();
+		memberVO.setId("m");
+		memberVO.setPw("m");
+		memberVO.setName("m");
+		memberVO.setEmail("m@m");
+		
+		MemberFilesVO memberFilesVO = new MemberFilesVO();
+		memberFilesVO.setFname("mFname.jpg");
+		memberFilesVO.setOname("mOname.jpg");
+		
+		memberVO.setMemberFilesVO(memberFilesVO);
+		memberFilesVO.setMemberVO(memberVO);
+		
+		//memberRepository.save(memberVO);
+		memberFilesRepository.save(memberFilesVO);//이건 안됨
+	}
+	
+	//@Test
+	void selectTest() {
+		Optional<MemberVO> opt = memberRepository.findById("h");
+		MemberVO memberVO = opt.get();
+		System.out.println(memberVO.getName());
+		System.out.println(memberVO.getEmail());
+		System.out.println(memberVO.getMemberFilesVO().getFname());
+		System.out.println(memberVO.getMemberFilesVO().getMemberVO().getId());
 	}
 	
 	//@Test

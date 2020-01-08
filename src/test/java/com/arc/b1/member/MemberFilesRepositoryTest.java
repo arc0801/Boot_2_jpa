@@ -16,6 +16,13 @@ class MemberFilesRepositoryTest {
 	private MemberFilesRepository memberFilesRepository;
 	
 	@Test
+	void selectTest() {
+		MemberFilesVO memberFilesVO = memberFilesRepository.findById(3).get();
+		System.out.println(memberFilesVO.getFname());
+		System.out.println(memberFilesVO.getMemberVO().getId());
+	}
+	
+	//@Test
 	void test() {
 		//long count = memberFilesRepository.count();
 		//System.out.println(count);
@@ -41,10 +48,10 @@ class MemberFilesRepositoryTest {
 		
 		memberFilesRepository.save(memberFilesVO);
 		*/
-		List<MemberFilesVO> list = memberFilesRepository.findById("a");
-		for(MemberFilesVO memberFilesVO:list) {
-			System.out.println(memberFilesVO.getFname());
-		}
+//		List<MemberFilesVO> list = memberFilesRepository.findById("a");
+//		for(MemberFilesVO memberFilesVO:list) {
+//			System.out.println(memberFilesVO.getFname());
+//		}
 	}
 
 }

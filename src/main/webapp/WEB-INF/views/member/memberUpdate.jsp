@@ -13,12 +13,12 @@
 	<c:import url="../template/nav.jsp" />
 	
 	<div class="container">
-	  <h2>Member Join</h2>
+	  <h2>Member Update Page</h2>
 	  
-	  <form:form action="memberJoin" modelAttribute="memberVO" method="post" enctype="multipart/form-data">
+	  <form:form action="memberUpdate" modelAttribute="memberVO" method="post" enctype="multipart/form-data">
 	  	<div class="form-group">
 	      <label for="id">ID:</label>
-	      <form:input path="id" placeholder="Enter ID" class="form-control" id="id" />
+	      <form:input path="id" readonly="true" class="form-control" id="id" />
 	      <form:errors path="id" />
 	    </div>
 	    
@@ -29,7 +29,7 @@
 	    </div>
 	    
 	    <div class="form-group">
-	      <label for="pw">Password:</label>
+	      <label for="pw">Password2:</label>
 	      <form:password path="pw2" class="form-control" id="pw" placeholder="Enter password" />
 	      <form:errors path="pw2" />
 	    </div>
@@ -46,38 +46,12 @@
 	    
 	    <div class="form-group">
 	      <label for="files">File:</label>
+	      <img alt="" src="../join/${member.memberFilesVO.fname}">
 	      <input type="file" class="form-control" id="files" name="files">
 	    </div>
 	    
-	    <button type="submit" class="btn btn-default">Submit</button>
+	    <button type="submit" class="btn btn-success">Update</button>
 	  </form:form>
-	  
 	</div>
- <script type="text/javascript">
-	$("#id").blur(function(){
-		var id = $("#id").val();
-		//alert(id);
-		
-		$.ajax({
-			url: "memberIdCheck",
-			type: "post",
-			data: {
-				id: id
-			},
-			success: function(data) {
-					if(data){
-						alert("중복");
-						$("#id").val("");
-						//$("#id").focus();
-					}else {
-						alert("사용가능");
-					}
-			},
-			error: function() {
-				alert("에러");
-			}
-		});
-	});
-</script>
 </body>
 </html>
