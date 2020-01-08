@@ -11,6 +11,6 @@ public class NoticeService {
 	@Autowired NoticeRepository noticeRepository;
 	
 	public List<NoticeVO> noticeList() throws Exception {
-		return noticeRepository.findAll();
+		return noticeRepository.findByNumGreaterThanOrderByNumDesc(0);
 	}
 }
