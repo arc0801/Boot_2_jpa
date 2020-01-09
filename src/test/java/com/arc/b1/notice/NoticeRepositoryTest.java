@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.arc.b1.board.BoardVO;
 import com.arc.b1.board.notice.NoticeFilesVO;
 import com.arc.b1.board.notice.NoticeRepository;
 import com.arc.b1.board.notice.NoticeVO;
@@ -25,7 +26,21 @@ class NoticeRepositoryTest {
 	@Autowired
 	private NoticeRepository noticeRepository;
 	
-	
+	@Test
+	void insertTest() {
+		NoticeVO noticeVO = new NoticeVO();
+		noticeVO.setTitle("z");
+		noticeVO.setWriter("z");
+		noticeVO.setContents("z");
+		
+//		for (int i=0;i<) {
+//			noticeFilesVO.setFname("zFname.jap");
+//			noticeFilesVO.setOname("zOname.jsp");
+//		}
+		
+		
+		
+	}
 	
 	//@Test
 	void selectTest() {
@@ -39,10 +54,10 @@ class NoticeRepositoryTest {
 	
 	//@Test
 	void test() {
-		List<NoticeVO> list = noticeRepository.findByNumGreaterThanOrderByNumDesc(0);
-		for (NoticeVO noticeVO : list) {
-			System.out.println(noticeVO.getNum());
-		}
+		//List<NoticeVO> list = noticeRepository.findByNumGreaterThanOrderByNumDesc(0);
+		//for (NoticeVO noticeVO : list) {
+		//	System.out.println(noticeVO.getNum());
+		//}
 	}
 
 }

@@ -18,7 +18,7 @@
 	<div class="container">
 	  <h2>Board Write</h2>
 	  
-	  <form:form modelAttribute="noticeVO" id="frm" enctype="multipart/form-data">
+	  <form:form id="frm" method="post" modelAttribute="boardVO" enctype="multipart/form-data">
 	  	<div class="form-group">
 	      <label for="title">Title:</label>
 	      <form:input path="title" placeholder="Enter Title" class="form-control" id="title" />
@@ -27,7 +27,7 @@
 	    
 	    <div class="form-group">
 	      <label for="writer">Writer:</label>
-	      <form:input path="writer" class="form-control" id="writer" value=""/>
+	      <form:input path="writer" placeholder="Enter Writer" class="form-control" id="writer" />
 	      <form:errors path="writer" cssStyle="color:red;" />
 	    </div>
 	    

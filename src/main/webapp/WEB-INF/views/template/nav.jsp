@@ -9,7 +9,7 @@
       <li class="active"><a href="${pageContext.request.contextPath}/">Home</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Notice <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="${pageContext.request.contextPath}/notice/noticeList">List</a></li>
+          <li><a href="${pageContext.request.contextPath}/notice/noticeList?page=0&size=10&sort=num,desc">List</a></li>
           <li><a href="${pageContext.request.contextPath}/notice/noticeWrite">Write</a></li>
           <li><a href="#">Page 1-3</a></li>
         </ul>

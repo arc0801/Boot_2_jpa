@@ -13,7 +13,7 @@
 <c:import url="../template/nav.jsp" />
 
 	<div class="container">
-	  <h2>Board Select</h2>
+	  <h2>${board} Select</h2>
 	  
 	  	<div class="form-group">
 	      <label for="title">Title:</label>
@@ -30,11 +30,12 @@
 	      <textarea class="form-control" id="contents">${select.contents}</textarea>
 	    </div>
 	    
-	    <%-- <div>
-	    	<c:forEach items="${select.files}" var="file">
-	    		<a href="./fileDown?fnum=${file.fnum}">${file.oname}</a>
+	    <div>
+	    	<c:forEach items="${select.noticeFilesVOs}" var="file">
+	    		<img alt="" src="../upload/notice/${file.fname}">
+	    		<%-- <a href="./fileDown?fnum=${file.fnum}">${file.oname}</a> --%>
 	    	</c:forEach>
-	    </div> --%>
+	    </div>
 	</div>
 
 </body>
