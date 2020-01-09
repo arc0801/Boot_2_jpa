@@ -57,5 +57,14 @@
 		</ul>
 	</div>
 
+	<div class="container">
+		<select class="kind">
+			<option value="t">Title</option>
+			<option value="w">Writer</option>
+			<option value="c">Contents</option>
+		</select>
+		<input type="text">
+	</div>
+	
 </body>
 </html>
