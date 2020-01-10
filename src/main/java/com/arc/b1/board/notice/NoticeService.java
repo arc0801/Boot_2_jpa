@@ -32,15 +32,17 @@ public class NoticeService {
 	private FileSaver fileSaver;
 	
 	
-	public Page<NoticeVO> getAllNotice(Pageable page){
-		return noticeRepository.findAll(page);
-	}
-	
-	public Page<NoticeVO> noticeList(Pageable page) throws Exception {
-		Page<NoticeVO> list = noticeRepository.findByNumGreaterThanOrderByNumDesc(0, page);
+//	public Page<NoticeVO> getAllNotice(Pageable page){
+//		return noticeRepository.findAll(page);
+//	}
+//	
+	public Page<NoticeVO> noticeList(String keyword, Pageable page) throws Exception {
+		//Page<NoticeVO> list = noticeRepository.findByNumGreaterThanOrderByNumDesc(0, page);
 //		for (NoticeVO noticeVO : list) {
 //			noticeVO.getNoticeFilesVOs();
 //		}
+		
+		Page<NoticeVO> list = noticeRepository.findByTitleContainingAndNumGreaterThan(keyword, 0, page);
 		
 		return list;
 	}

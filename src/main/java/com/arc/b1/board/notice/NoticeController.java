@@ -37,12 +37,12 @@ public class NoticeController {
 	}
 	
 	@GetMapping("noticeList")
-	public ModelAndView noticeList(Pageable pageable) throws Exception {
+	public ModelAndView noticeList(String keyword, Pageable pageable) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
 		/*Pageable pageable2 = PageRequest.of(0, 10, Sort.Direction.DESC, "num");*/
 		
-		Page<NoticeVO> page = noticeService.noticeList(pageable);
+		Page<NoticeVO> page = noticeService.noticeList(keyword, pageable);
 		
 		List<NoticeVO> list = page.getContent();
 		

@@ -63,8 +63,17 @@
 			<option value="w">Writer</option>
 			<option value="c">Contents</option>
 		</select>
-		<input type="text">
+		<input type="text" name="keyword" placeholder="Search">
+		<button class="btn btn-info" id="search">Search</button>
 	</div>
-	
+
+<script type="text/javascript">
+	$('#search').click(function(){
+		var kind = $('.kind option:selected').val();
+		//alert(kind);
+
+		
+	});
+</script>
 </body>
 </html>

@@ -14,6 +14,7 @@ public interface NoticeRepository extends JpaRepository<NoticeVO, Integer>{
 	// select * from notice where num > ? order by num desc;
 	//List<NoticeVO> findByNumGreaterThanOrderByNumDesc(int num);
 	
-	Page<NoticeVO> findByNumGreaterThanOrderByNumDesc(int num, Pageable page);
+	Page<NoticeVO> findByNumGreaterThanOrderByNumDesc(int num, Pageable page) throws Exception;
 	
+	Page<NoticeVO> findByTitleContainingAndNumGreaterThan(String title, int num, Pageable page) throws Exception;
 }
